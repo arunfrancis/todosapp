@@ -1,0 +1,34 @@
+<div class="todo_wrapper_home">
+
+  <div class="todo_head">
+
+    <table border=0 width=100%>
+      <tr>
+        <td width=400>
+          <a href="/todos/index"><img src="/assets/todo.png" height=150 width=150> </a><span style="vertical-align:40px;font-size:80px;">Todos</span>
+        </td>
+        <td>
+          <table border=0 align=right width=470>
+            <tr>
+              <td>
+                <%= form_tag("/session/create", :method => 'post') do %>
+                <%= text_field_tag(:user,'',class:"todo_textstyle")%>
+                <%= password_field_tag(:password,'',class:"todo_textstyle")%>&nbsp;
+      
+                <%= submit_tag("login", class:"todo_button")%>
+                <%end%><br>
+                <a href="/todos/signup" style="color:white;">Signup</a>
+              </td>
+            </tr>
+          <table>
+        </td>
+      </tr>
+    </table>
+  
+  </div>
+
+
+
+</div>
+
+

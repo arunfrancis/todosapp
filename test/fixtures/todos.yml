@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  todo_text: MyString
+  complete: false
+  record_del_flag: false
+
+two:
+  todo_text: MyString
+  complete: false
+  record_del_flag: false

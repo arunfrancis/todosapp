@@ -1,0 +1,22 @@
+<div class="todo_wrapper">
+  <div class="todo_head">
+
+    <table border=0 width=100%>
+      <tr>
+        <td>
+          <a href="/todos/index"><img src="/assets/todo.png" height=150 width=150> </a><span style="vertical-align:40px;font-size:80px;">Todos</span>
+        </td>
+      </tr>
+    </table>
+  
+  </div>
+<div class="todo_list">
+<h1>Login</h1>
+<%= form_tag("/session/create", :method => 'post') do %>
+<%= text_field_tag(:user,'',class:"todo_textstyle")%>
+<%= text_field_tag(:password,'',class:"todo_textstyle")%>
+<%= submit_tag("login", class:"todo_button")%>
+<%end%>
+
+</div>
+</div>

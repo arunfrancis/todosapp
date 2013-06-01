@@ -1,0 +1,73 @@
+
+<div class="todo_wrapper">
+
+
+  <div class="todo_head">
+
+
+    <a href="/todos/index"><img src="/assets/todo.png" height=80 width=80> </a><span style="vertical-align:30px;">Todos</span>
+      
+    <span style="margin-left:25%;">
+      <a href="/todos/all_todo" style="color:white;">All todos</a>
+    </span>
+  
+    <span style="margin-left:90%;">
+      <a href="/session/destroy" style="color:white;">Logout</a>
+    </span>
+  
+  
+  </div>
+
+
+  <div class="todo_list">
+
+    <% @todo_group.sort.reverse.each do |date, todo_items| %>
+      <ul style="list-style-type:none;">
+        <h2> <%= date.to_date %></h2>
+        <% for todo_item in todo_items %>
+
+          <div class="todo_group">
+            <% if todo_item.complete == TRUE %>
+ 
+            <li> 
+              <%= check_box_tag  "todos_checkbox[]",todo_item.id, 'active', class:"complete_check" %> <strike style="color:black;width:10px;"><span  style='color:grey;font-size:40px;'><%= todo_item.todo_text %></span></strike>
+              
+            <span>
+              
+              <%@users.each do |user|%>
+                <% if todo_item.user == user.id%>
+                  Completed By <%= user.name %> <%= time_ago_in_words(todo_item.updated_at) %> ago</h2>
+                <%end%>
+              <%end%>
+    
+            </span>
+            </li> 
+  
+
+
+          <% else %>
+
+            <li> <%= check_box_tag  "todos_checkbox[]",todo_item.id,checked = false,class:"complete_check"  %> <span style='color:black;font-size:40px;'><%= todo_item.todo_text %> </span> 
+              
+          <span>
+  
+            <%@users.each do |user|%>
+              <% if todo_item.user == user.id%>
+                By <%= user.name %>
+              <%end%>
+            <%end%>  
+          </span></li> 
+
+
+
+        <% end %>
+      </div>
+      <%end%>
+
+
+      </ul>
+    <%end%>
+  </div>
+
+</div>
+

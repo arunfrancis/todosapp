@@ -1,0 +1,64 @@
+<div class="todo_wrapper">
+
+
+<div class="todo_head">
+
+
+  <a href="/todos/index"><img src="/assets/todo.png" height=80 width=80> </a><span style="vertical-align:30px;">Todos</span>
+      
+  <span style="margin-left:25%;">
+    <a href="/todos/all_todo" style="color:white;">All todos</a>
+  </span>
+  
+  <span style="margin-left:90%;">
+    <a href="/session/destroy" style="color:white;">Logout</a>
+  </span>
+  
+  
+</div>
+
+
+<div class="todo_add">
+  <%= form_tag("/todos/add", :method => 'post') do %>
+
+    <%= text_field_tag(:todo_text, '' ,class:"todo_textstyle")%>&nbsp;
+    <%= submit_tag("Add Todo", class:"todo_button")%>
+
+  <%end%>
+</div>
+
+
+<div class="todo_list">
+  <%= form_tag("/todos/complete", :method => "post") do %>
+  <ul style="list-style-type:none;">
+    
+    <% @todo_group.sort.reverse.each do |date, todo_items| %>
+     <h2><%= date.to_date %> </h2>
+    <% for todo_item in todo_items %>
+
+    <div class="todo_group">
+      <% if todo_item.complete == TRUE %>
+       
+        <li> <%= check_box_tag  "todos_checkbox[]",todo_item.id, 'active', class:"complete_check" %> <strike style="color:black;width:10px;"><span  style='color:grey;font-size:40px;'><%= todo_item.todo_text %></span></strike> <a href="/todos/delete/<%= todo_item.id %>" style="text-decoration:none;" >Delete</a> </li>
+  
+      <% else %>
+    
+        <li> <%= check_box_tag  "todos_checkbox[]",todo_item.id,checked = false,class:"complete_check"  %> <span style='color:black;font-size:40px;'><%= todo_item.todo_text %> </span>  <a href="/todos/delete/<%= todo_item.id %>" style="text-decoration:none;" >Delete</a> </li>
+  
+      <% end %>
+    </div>
+   <%end%>
+   
+   <%end%>
+   
+  </ul>
+  <%= submit_tag("Complete Todos", class:"todo_button") %>
+  
+  <%end %>
+</div>
+
+
+
+
+
+	
